@@ -173,4 +173,5 @@ pyrightconfig.json
 # Personal files
 *.png
 *.jpg
-./output
+*.csv
+output/
