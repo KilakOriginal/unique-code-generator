@@ -1,11 +1,11 @@
 # Unique Code Generator
 
-The **Unique Code Generator** is a Python-based tool for generating unique codes and encoding them as either QR codes or EAN13 barcodes. It supports generating codes from scratch or reading them from a file, and it can optionally embed a logo into QR codes.
+The **Unique Code Generator** is a Python-based tool for generating unique codes and encoding them as either QR codes or EAN13/EAN8 barcodes. It supports generating codes from scratch or reading them from a file, and it can optionally embed a logo into QR codes.
 
 ## Features
 
 - Generate unique numeric or alphanumeric codes.
-- Encode codes as QR codes or EAN13 barcodes.
+- Encode codes as QR codes or EAN13/EAN8 barcodes.
 - Embed a logo into QR codes.
 - Save generated codes and images to a specified output directory.
 - Create a manifest file (`manifest.csv`) with details of generated codes and their corresponding image files.
