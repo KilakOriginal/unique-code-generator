@@ -6,6 +6,7 @@ from enum import Enum
 
 class EncodingType(Enum):
     EAN13 = "ean13"
+    EAN8 = "ean8"
     QR = "qr"
 
 def parse_args():
@@ -39,7 +40,7 @@ def parse_args():
         type=str,
         choices=[e.value for e in EncodingType],
         default=EncodingType.EAN13.value,
-        help="Type of encoding to use (EAN13 or QR)",
+        help="Type of encoding to use ('ean13', 'ean8' or 'qr')",
     )
 
     parser.add_argument(
@@ -139,7 +140,7 @@ def generate_encoded_images(codes: list[str], output_dir: str, encoding_type: En
 
     import qrcode
     from PIL import Image
-    from barcode import EAN13
+    from barcode import EAN13, EAN8
     from barcode.writer import ImageWriter
 
     # Validate and load the logo once
@@ -182,6 +183,10 @@ def generate_encoded_images(codes: list[str], output_dir: str, encoding_type: En
                     # Generate EAN13 barcode
                     barcode = EAN13(code.zfill(12), writer=ImageWriter())
                     barcode.save(file_path)
+                elif encoding_type == EncodingType.EAN8:
+                    # Generate EAN8 barcode
+                    barcode = EAN8(code.zfill(8), writer=ImageWriter())
+                    barcode.save(file_path)
                 elif encoding_type == EncodingType.QR:
                     # Generate QR code
                     qr.clear()  # Clear previous data
@@ -199,7 +204,8 @@ def generate_encoded_images(codes: list[str], output_dir: str, encoding_type: En
 
                     img.save(file_path)
                 else:
-                    raise ValueError(f"Unsupported encoding type: {encoding_type}")
+                    logging.error(f"Unsupported encoding type: {encoding_type}. Aborting.")
+                    return
 
                 # Write to the manifest file
                 manifest.write(f"{file_name},{code}\n")
