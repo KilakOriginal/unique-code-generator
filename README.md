@@ -38,7 +38,7 @@ python generate.py [OPTIONS]
 |`-c`, `--count`|Number of codes to generate.|None|
 |`-l`, `--length`|Length of each generated code.|12|
 |`-a`, `--alphanum`|Generate alphanumeric codes instead of numeric.|False|
-|`-t`, `--encoding-type`|Type of encoding to use (`ean13` or `qr`).|`ean13`|
+|`-t`, `--encoding-type`|Type of encoding to use (`ean13`, `ean8` or `qr`).|`ean13`|
 |`-i`, `--image`|Path to an image file to embed in QR codes.|None|
 |`-o`, `--output-dir`|Directory to save the generated codes and images.|`./output`|
 |`-v`, `--verbose`|Enable verbose output.|False|
