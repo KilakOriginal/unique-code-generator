@@ -208,7 +208,7 @@ def generate_encoded_images(codes: list[str], output_dir: str, encoding_type: En
                     return
 
                 # Write to the manifest file
-                manifest.write(f"{file_name},{code}\n")
+                manifest.write(f"{code}\n")
 
             except Exception as e:
                 logging.error(f"Failed to generate {encoding_type.value} code for {code}: {e}")
