@@ -176,7 +176,7 @@ def generate_encoded_images(codes: list[str], output_dir: str, encoding_type: En
         logging.info(f"Generating {encoding_type.value} codes in {output_dir}")
         for code in codes:
             try:
-                file_name = f"{code}.png"
+                file_name = f"{code}"
                 file_path = os.path.join(output_dir, file_name)
 
                 if encoding_type == EncodingType.EAN13:
@@ -184,7 +184,7 @@ def generate_encoded_images(codes: list[str], output_dir: str, encoding_type: En
                     barcode = EAN13(code, writer=ImageWriter())
                     barcode.save(file_path)
                 elif encoding_type == EncodingType.EAN8:
-                    code.zfill(8)
+                    code = code.zfill(8)
                     barcode = EAN8(code, writer=ImageWriter())
                     barcode.save(file_path)
                 elif encoding_type == EncodingType.QR:
@@ -207,7 +207,6 @@ def generate_encoded_images(codes: list[str], output_dir: str, encoding_type: En
                     logging.error(f"Unsupported encoding type: {encoding_type}. Aborting.")
                     return
 
-                # Write to the manifest file
                 manifest.write(f"{code}\n")
 
             except Exception as e:
