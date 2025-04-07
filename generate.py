@@ -181,11 +181,11 @@ def generate_encoded_images(codes: list[str], output_dir: str, encoding_type: En
                 file_path = os.path.join(output_dir, file_name)
 
                 if encoding_type == EncodingType.EAN13:
-                    code = code.zfill(12)
+                    code = code[:12].zfill(12)
                     barcode = EAN13(code, writer=ImageWriter())
                     barcode.save(file_path)
                 elif encoding_type == EncodingType.EAN8:
-                    code = code.zfill(7)
+                    code = code[:7].zfill(7)
                     barcode = EAN8(code, writer=ImageWriter())
                     barcode.save(file_path)
                 elif encoding_type == EncodingType.QR:
