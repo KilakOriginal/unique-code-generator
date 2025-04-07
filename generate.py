@@ -174,6 +174,7 @@ def generate_encoded_images(codes: list[str], output_dir: str, encoding_type: En
 
     with open(manifest_path, "w") as manifest:
         logging.info(f"Generating {encoding_type.value} codes in {output_dir}")
+        manifest.write(f"{encoding_type.name}\n")
         for code in codes:
             try:
                 file_name = f"{code}"
